@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "enbeons_custom_books",
+	"version": "${version}",
+	"name": "Enbeon's Custom Books",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Enbeon"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/enbeons_custom_books/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.enbeon.books.EnbeonsCustomBooks"
+		],
+		"client": [
+			"com.enbeon.books.EnbeonsCustomBooksClient"
+		]
+	},
+	"mixins": [
+		"enbeons_custom_books.mixins.json",
+		{
+			"config": "enbeons_custom_books.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
