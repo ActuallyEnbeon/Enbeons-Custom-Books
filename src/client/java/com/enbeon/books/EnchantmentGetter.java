@@ -12,15 +12,15 @@ public class EnchantmentGetter {
         // Priority 0: Treasure enchants
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.FROST_WALKER)) {
-                return makeID("powder_snow_bucket");
+                return makeID("frost_walker");
             } else if (enchantment.matchesKey(Enchantments.MENDING)) {
-                return makeID("ender_pearl");
+                return makeID("mending");
             } else if (enchantment.matchesKey(Enchantments.SOUL_SPEED)) {
-                return makeID("blaze_rod");
+                return makeID("soul_speed");
             } else if (enchantment.matchesKey(Enchantments.SWIFT_SNEAK)) {
-                return makeID("amethyst_shard");
+                return makeID("swift_sneak");
             } else if (enchantment.matchesKey(Enchantments.WIND_BURST)) {
-                return makeID("wind_charge");
+                return makeID("wind_burst");
             }
         }
 
