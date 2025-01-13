@@ -2,15 +2,10 @@ package com.enbeon.books;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class EnchantmentGetter {
     public static Identifier getEnchantment(Set<RegistryEntry<Enchantment>> enchantments, Identifier fallback) {
@@ -32,99 +27,99 @@ public class EnchantmentGetter {
         // Priority 1: Weight 1
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.CHANNELING)) {
-                return makeID("lightning_rod");
+                return makeID("channeling");
             } else if (enchantment.matchesKey(Enchantments.INFINITY)) {
-                return makeID("arrow");
+                return makeID("infinity");
             } else if (enchantment.matchesKey(Enchantments.SILK_TOUCH)) {
-                return makeID("blaze_powder");
+                return makeID("silk_touch");
             } else if (enchantment.matchesKey(Enchantments.THORNS)) {
-                return makeID("netherite_sword");
+                return makeID("thorns");
             }
         }
 
         // Priority 2: Weight 2
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.AQUA_AFFINITY)) {
-                return makeID("heart_of_the_sea");
+                return makeID("aqua_affinity");
             } else if (enchantment.matchesKey(Enchantments.BLAST_PROTECTION)) {
-                return makeID("tnt");
+                return makeID("blast_protection");
             } else if (enchantment.matchesKey(Enchantments.BREACH)) {
-                return makeID("end_crystal");
+                return makeID("breach");
             } else if (enchantment.matchesKey(Enchantments.DEPTH_STRIDER)) {
-                return makeID("cobweb");
+                return makeID("depth_strider");
             } else if (enchantment.matchesKey(Enchantments.FIRE_ASPECT)) {
-                return makeID("magma_cream");
+                return makeID("fire_aspect");
             } else if (enchantment.matchesKey(Enchantments.FLAME)) {
-                return makeID("tipped_arrow");
+                return makeID("flame");
             } else if (enchantment.matchesKey(Enchantments.FORTUNE)) {
-                return makeID("emerald");
+                return makeID("fortune");
             } else if (enchantment.matchesKey(Enchantments.IMPALING)) {
-                return makeID("trident");
+                return makeID("impaling");
             } else if (enchantment.matchesKey(Enchantments.LOOTING)) {
-                return makeID("gold_ingot");
+                return makeID("looting");
             } else if (enchantment.matchesKey(Enchantments.LUCK_OF_THE_SEA)) {
-                return makeID("leather_boots");
+                return makeID("luck_of_the_sea");
             } else if (enchantment.matchesKey(Enchantments.LURE)) {
-                return makeID("salmon");
+                return makeID("lure");
             } else if (enchantment.matchesKey(Enchantments.MULTISHOT)) {
-                return makeID("crossbow");
+                return makeID("multishot");
             } else if (enchantment.matchesKey(Enchantments.PUNCH)) {
-                return makeID("bow");
+                return makeID("punch");
             } else if (enchantment.matchesKey(Enchantments.RESPIRATION)) {
-                return makeID("pufferfish");
+                return makeID("respiration");
             } else if (enchantment.matchesKey(Enchantments.RIPTIDE)) {
-                return makeID("elytra");
+                return makeID("riptide");
             } else if (enchantment.matchesKey(Enchantments.SWEEPING_EDGE)) {
-                return makeID("iron_sword");
+                return makeID("sweeping_edge");
             }
         }
 
         // Priority 3: Weight 5
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.BANE_OF_ARTHROPODS)) {
-                return makeID("spider_eye");
+                return makeID("bane_of_arthropods");
             } else if (enchantment.matchesKey(Enchantments.DENSITY)) {
-                return makeID("heavy_core");
+                return makeID("density");
             } else if (enchantment.matchesKey(Enchantments.FEATHER_FALLING)) {
-                return makeID("feather");
+                return makeID("feather_falling");
             } else if (enchantment.matchesKey(Enchantments.FIRE_PROTECTION)) {
-                return makeID("golden_helmet");
+                return makeID("fire_protection");
             } else if (enchantment.matchesKey(Enchantments.KNOCKBACK)) {
-                return makeID("diamond_sword");
+                return makeID("knockback");
             } else if (enchantment.matchesKey(Enchantments.LOYALTY)) {
-                return makeID("string");
+                return makeID("loyalty");
             } else if (enchantment.matchesKey(Enchantments.PROJECTILE_PROTECTION)) {
-                return makeID("iron_helmet");
+                return makeID("projectile_protection");
             } else if (enchantment.matchesKey(Enchantments.QUICK_CHARGE)) {
-                return makeID("potion");
+                return makeID("quick_charge");
             } else if (enchantment.matchesKey(Enchantments.SMITE)) {
-                return makeID("rotten_flesh");
+                return makeID("smite");
             } else if (enchantment.matchesKey(Enchantments.UNBREAKING)) {
-                return makeID("iron_ingot");
+                return makeID("unbreaking");
             }
         }
 
         // Priority 4: Weight 10
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.EFFICIENCY)) {
-                return makeID("golden_pickaxe");
+                return makeID("efficiency");
             } else if (enchantment.matchesKey(Enchantments.PIERCING)) {
-                return makeID("golden_sword");
+                return makeID("piercing");
             } else if (enchantment.matchesKey(Enchantments.POWER)) {
-                return makeID("wooden_sword");
+                return makeID("power");
             } else if (enchantment.matchesKey(Enchantments.PROTECTION)) {
-                return makeID("iron_chestplate");
+                return makeID("protection");
             } else if (enchantment.matchesKey(Enchantments.SHARPNESS)) {
-                return makeID("stone_sword");
+                return makeID("sharpness");
             }
         }
 
         // Priority 5: Curses
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.BINDING_CURSE)) {
-                return makeID("leather_helmet");
+                return makeID("binding_curse");
             } else if (enchantment.matchesKey(Enchantments.VANISHING_CURSE)) {
-                return makeID("recovery_compass");
+                return makeID("vanishing_curse");
             }
         }
 
@@ -132,7 +127,6 @@ public class EnchantmentGetter {
     }
 
     private static Identifier makeID(String path) {
-        // TODO: change namespace to this mod's ID
-        return Identifier.of("minecraft", path);
+        return Identifier.of(EnbeonsCustomBooks.MOD_ID, path);
     }
 }
