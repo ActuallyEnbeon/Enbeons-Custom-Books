@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "enbeons_custom_books:item/swift_sneak"
+  }
+}
