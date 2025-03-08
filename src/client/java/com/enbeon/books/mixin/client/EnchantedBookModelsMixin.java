@@ -1,21 +1,15 @@
 package com.enbeon.books.mixin.client;
 
-import com.enbeon.books.EnbeonsCustomBooks;
 import com.enbeon.books.EnchantmentGetter;
 import net.minecraft.client.item.ItemModelManager;
-import net.minecraft.component.ComponentMap;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-
-import java.util.Set;
 
 @Mixin(ItemModelManager.class)
 public class EnchantedBookModelsMixin {
