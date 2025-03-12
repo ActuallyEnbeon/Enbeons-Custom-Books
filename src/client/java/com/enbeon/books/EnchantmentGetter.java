@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class EnchantmentGetter {
     public static Identifier getEnchantment(Set<RegistryEntry<Enchantment>> enchantments, Identifier fallback) {
-        // Priority 0: Treasure enchants
+        // Priority -1: Treasure enchants
         for (RegistryEntry<Enchantment> enchantment : enchantments) {
             if (enchantment.matchesKey(Enchantments.FROST_WALKER)) {
                 return makeID("frost_walker");
@@ -21,6 +21,15 @@ public class EnchantmentGetter {
                 return makeID("swift_sneak");
             } else if (enchantment.matchesKey(Enchantments.WIND_BURST)) {
                 return makeID("wind_burst");
+            }
+        }
+
+        // Priority 0: Curses
+        for (RegistryEntry<Enchantment> enchantment : enchantments) {
+            if (enchantment.matchesKey(Enchantments.BINDING_CURSE)) {
+                return makeID("binding_curse");
+            } else if (enchantment.matchesKey(Enchantments.VANISHING_CURSE)) {
+                return makeID("vanishing_curse");
             }
         }
 
@@ -111,15 +120,6 @@ public class EnchantmentGetter {
                 return makeID("protection");
             } else if (enchantment.matchesKey(Enchantments.SHARPNESS)) {
                 return makeID("sharpness");
-            }
-        }
-
-        // Priority 5: Curses
-        for (RegistryEntry<Enchantment> enchantment : enchantments) {
-            if (enchantment.matchesKey(Enchantments.BINDING_CURSE)) {
-                return makeID("binding_curse");
-            } else if (enchantment.matchesKey(Enchantments.VANISHING_CURSE)) {
-                return makeID("vanishing_curse");
             }
         }
 
