@@ -3,8 +3,7 @@
   "package": "com.enbeon.books.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "EnchantedBookModelsMixin",
-    "ExampleClientMixin"
+    "EnchantedBookModelsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
