@@ -36,12 +36,13 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+	// owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
-	include "io.wispforest:owo-lib:${project.owo_version}"
 
+	// Mod Menu
 	modApi "com.terraformersmc:modmenu:13.0.3"
 }
 
