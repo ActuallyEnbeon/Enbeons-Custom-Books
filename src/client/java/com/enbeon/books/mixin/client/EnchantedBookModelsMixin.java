@@ -11,6 +11,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
+
 @Mixin(ItemModelManager.class)
 public class EnchantedBookModelsMixin {
     @Redirect(
@@ -25,7 +27,7 @@ public class EnchantedBookModelsMixin {
                     DataComponentTypes.STORED_ENCHANTMENTS, null
             );
 
-            if (storedEnchantments != null && !storedEnchantments.isEmpty()) {
+            if (storedEnchantments != null && !storedEnchantments.isEmpty() && CONFIG.modEnabled()) {
                 return EnchantmentGetter.getEnchantment(
                         storedEnchantments.getEnchantments(), modelID
                 );

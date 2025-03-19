@@ -1,0 +1,7 @@
+{
+  "text.config.enbeons-custom-books-config.title": "Enbeon's Custom Books Config",
+  "text.config.enbeons-custom-books-config.section.general": "General",
+  "text.config.enbeons-custom-books-config.option.modEnabled": "Custom Enchanted Book textures",
+  "text.config.enbeons-custom-books-config.option.modEnabled.tooltip": "If disabled, Enchanted Books\nuse the default texture",
+  "text.config.enbeons-custom-books-config.option.mendingAnimation": "Animated Mending book texture"
+}

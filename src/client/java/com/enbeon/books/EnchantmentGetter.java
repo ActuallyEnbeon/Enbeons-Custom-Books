@@ -7,6 +7,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.Set;
 
+import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
+
 public class EnchantmentGetter {
     public static Identifier getEnchantment(Set<RegistryEntry<Enchantment>> enchantments, Identifier fallback) {
         // Priority -1: Treasure enchants
@@ -14,7 +16,7 @@ public class EnchantmentGetter {
             if (enchantment.matchesKey(Enchantments.FROST_WALKER)) {
                 return makeID("frost_walker");
             } else if (enchantment.matchesKey(Enchantments.MENDING)) {
-                return makeID("mending");
+                return makeID(CONFIG.mendingAnimation() ? "mending" : "mending_static");
             } else if (enchantment.matchesKey(Enchantments.SOUL_SPEED)) {
                 return makeID("soul_speed");
             } else if (enchantment.matchesKey(Enchantments.SWIFT_SNEAK)) {

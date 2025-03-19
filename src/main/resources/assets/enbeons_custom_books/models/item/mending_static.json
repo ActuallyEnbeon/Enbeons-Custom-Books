@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "enbeons_custom_books:item/mending"
+    "layer0": "enbeons_custom_books:item/mending_static"
   }
 }
