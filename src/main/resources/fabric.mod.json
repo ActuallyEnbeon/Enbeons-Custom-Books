@@ -3,15 +3,14 @@
 	"id": "enbeons_custom_books",
 	"version": "${version}",
 	"name": "Enbeon's Custom Books",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Yet another mod that gives Enchanted Books unique textures based on the enchantments they have. Highly customisible.",
 	"authors": [
 		"Enbeon"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/ActuallyEnbeon/Enbeons-Custom-Books"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/enbeons_custom_books/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -36,6 +35,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"modmenu": ">=13.0.3"
 	}
 }
