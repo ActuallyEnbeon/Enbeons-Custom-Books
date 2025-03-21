@@ -6,12 +6,12 @@ import net.minecraft.util.Identifier;
 
 import java.util.Set;
 
-import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
 import static com.enbeon.books.EnbeonsCustomBooks.MOD_ID;
+import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 
 public class EnchantmentGetter {
     public static Identifier getEnchantment(Set<RegistryEntry<Enchantment>> enchantments, Identifier fallback) {
-        for (String enchantmentName : CONFIG.enchantmentPrecedence()) {
+        for (String enchantmentName : CONFIG.getEnchantmentPrecedence()) {
             boolean match = enchantments.stream().anyMatch(
                     entry -> enchantmentIDMatches(entry, enchantmentName)
             );
@@ -31,7 +31,7 @@ public class EnchantmentGetter {
     }
 
     private static String specialBehaviour(String enchantmentName) {
-        if (enchantmentName.equals("mending") && !CONFIG.mendingAnimation()) {
+        if (enchantmentName.equals("mending") && !CONFIG.isMendingAnimated()) {
             return "mending_static";
         }
         return enchantmentName;

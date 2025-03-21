@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
+import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 
 @Mixin(ItemModelManager.class)
 public class EnchantedBookModelsMixin {
     @Redirect(
-        method="update(Lnet/minecraft/client/render/item/ItemRenderState;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ModelTransformationMode;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;I)V",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;get(Lnet/minecraft/component/ComponentType;)Ljava/lang/Object;")
+            method = "update(Lnet/minecraft/client/render/item/ItemRenderState;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ModelTransformationMode;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;I)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;get(Lnet/minecraft/component/ComponentType;)Ljava/lang/Object;")
     )
     private Object bookModelReturner(ItemStack instance, ComponentType<Identifier> componentType) {
         Identifier modelID = instance.get(componentType);
@@ -27,7 +27,7 @@ public class EnchantedBookModelsMixin {
                     DataComponentTypes.STORED_ENCHANTMENTS, null
             );
 
-            if (storedEnchantments != null && !storedEnchantments.isEmpty() && CONFIG.modEnabled()) {
+            if (storedEnchantments != null && !storedEnchantments.isEmpty() && CONFIG.isModEnabled()) {
                 return EnchantmentGetter.getEnchantment(
                         storedEnchantments.getEnchantments(), modelID
                 );
