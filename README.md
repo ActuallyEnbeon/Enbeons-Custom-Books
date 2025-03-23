@@ -15,7 +15,7 @@ This precedence is fully configurable (in the config `.json` file - I'm working 
 and I've provided what I feel is a sensible default order, with rarer enchantments taking priority over more common ones
 (Mending has the highest priority, Sharpness has the lowest).
 
-I took inspiration from [Even Better Enchants](https://modrinth.com/resourcepack/even-better-enchants) for the textures in this mod.
+I took inspiration from [Even Better Enchants](https://modrinth.com/resourcepack/even-better-enchants) for some of the textures in this mod.
 
 ## Textures
 
@@ -25,5 +25,5 @@ The animation for the Mending book texture can be disabled in the in-game config
 
 ## Mod compatibility
 
-If, for some reason, people find this mod useful and want to add modded enchantmnets to it, then feel free to fork it.
+If, for some reason, people find this mod useful and want to add modded enchantments to it, then feel free to fork it.
 I'm also happy to receive pull requests, although bear in mind that it might take me a little while to get around to them.
