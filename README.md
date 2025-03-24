@@ -2,7 +2,7 @@
 
 Yet another Minecraft mod that gives Enchanted Books unique textures based on the enchantments they have.
 
-Compatible with Fabric and Quilt. If you run Forge or NeoForge, sorry!
+Compatible with Fabric and Quilt. Sorry if you run Forge or NeoForge!
 
 This mod is currently compatible with 1.21.4 only. I aim to update it to future versions, but I probably won't backport unless there's demand for it.
 
@@ -25,13 +25,14 @@ The animation for the Mending book texture can be disabled in the in-game config
 
 ## Mod compatibility
 
-If, for some reason, people find this mod useful and want to add modded enchantments to it, then feel free to fork it.
+If you find this mod useful and want to add modded enchantments to it, then feel free to fork it.
+
 I'm also happy to receive pull requests, although bear in mind that it might take me a little while to get around to them.
 
 ### How to add other mods' enchantments
 
 1. Fork this repository and clone it to your local system.
-2. Create your book textures. Each file should have the same name as the ID of the enchantment (_without_ the namespace) and should be a `.png` file.
+2. Create your book textures. Each file should have the same name as the ID of the enchantment and should be a `.png` file.
 3. Navigate to `src/main/resources/assets/enbeons_custom_books`.
 4. Create a new folder under `textures/item` named after the *namespace* of the target mod (it needs to be exactly right) and place the textures inside.
 
