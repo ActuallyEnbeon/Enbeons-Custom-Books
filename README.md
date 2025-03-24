@@ -27,3 +27,40 @@ The animation for the Mending book texture can be disabled in the in-game config
 
 If, for some reason, people find this mod useful and want to add modded enchantments to it, then feel free to fork it.
 I'm also happy to receive pull requests, although bear in mind that it might take me a little while to get around to them.
+
+### How to add other mods' enchantments
+
+1. Fork this repository and clone it to your local system.
+2. Create your book textures. Each file should have the same name as the ID of the enchantment (_without_ the namespace) and should be a `.png` file.
+3. Navigate to `src/main/resources/assets/enbeons_custom_books`.
+4. Create a new folder under `textures/item` named after the *namespace* of the target mod (it needs to be exactly right) and place the textures inside.
+
+5. Create a new folder under `models/item`, again named after the mod's namespace, and create new model `.json` files for each enchantment.
+   They should follow this format:
+    ```json
+   {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "enbeons_custom_books:item/mod_namespace/enchantment_id"
+      }
+    }
+   ```
+   with `mod_namespace` and `enchantment_id` changed to the correct values.
+
+6. Create a new folder under `items`, again named after the mod's namespace, and create new `.json` files for each enchantment. (Blame Mojang if this is seeming tedious.)
+    They should follow this format:
+    ```json
+    {
+      "model": {
+      "type": "minecraft:model",
+        "model": "enbeons_custom_books:item/mod_namespace/enchantment_id"
+      }
+    }
+    ```
+   with `mod_namespace` and `enchantment_id` again changed to the correct values.
+
+7. Add all the new enchantments to `enchantmentPrecedence` in the `BooksConfig` class.
+    You can put them wherever you like in the order, although you may want to consider putting rarer or more valuable enchantments higher up than more common ones.
+    Strings should be in the format `mod_namespace:enchantment_id` (note the colon `:` instead of slash `/`).
+8. Try it out! If everything has gone to plan, you should see your new textures in-game.
+    

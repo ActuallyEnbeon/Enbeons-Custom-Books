@@ -27,13 +27,14 @@ public class EnchantmentGetter {
         if (!(entry instanceof RegistryEntry.Reference<Enchantment> ref)) {
             return false;
         }
-        return ref.matchesId(Identifier.of("minecraft", enchantmentName));
+        return ref.matchesId(Identifier.of(enchantmentName));
     }
 
     private static String specialBehaviour(String enchantmentName) {
         if (enchantmentName.equals("mending") && !CONFIG.isMendingAnimated()) {
             return "mending_static";
         }
-        return enchantmentName;
+        // ':' not allowed in paths, use '/' in conjunction with directory structure instead
+        return enchantmentName.replace(':', '/');
     }
 }
