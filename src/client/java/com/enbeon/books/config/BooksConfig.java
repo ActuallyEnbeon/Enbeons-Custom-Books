@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 import static com.enbeon.books.EnbeonsCustomBooksClient.configLocation;
@@ -16,7 +18,7 @@ public class BooksConfig {
     boolean mendingAnimated = true;
 
     // TODO: make a screen to allow customising the order
-    String[] enchantmentPrecedence = {
+    ArrayList<String> enchantmentPrecedence = new ArrayList<>(List.of(
             // Treasure enchantments
             "mending",
             "frost_walker",
@@ -65,7 +67,7 @@ public class BooksConfig {
             "power",
             "protection",
             "sharpness"
-    };
+    ));
 
     public boolean isModEnabled() {
         return modEnabled;
@@ -75,7 +77,7 @@ public class BooksConfig {
         return mendingAnimated;
     }
 
-    public String[] getEnchantmentPrecedence() {
+    public ArrayList<String> getEnchantmentPrecedence() {
         return enchantmentPrecedence;
     }
 
@@ -96,10 +98,20 @@ public class BooksConfig {
             return;
         }
         try {
-            Gson gson = new GsonBuilder()
-                    .setPrettyPrinting()
-                    .create();
-            CONFIG = gson.fromJson(Files.readString(configLocation), BooksConfig.class);
+            // Load config from file
+            Gson gson = new Gson();
+            BooksConfig newConfig = gson.fromJson(Files.readString(configLocation), BooksConfig.class);
+
+            // Ensure that all enchantments are present in the config
+            for (int i = 0; i < CONFIG.enchantmentPrecedence.size(); i++) {
+                String enchantmentName = CONFIG.enchantmentPrecedence.get(i);
+                if (!newConfig.enchantmentPrecedence.contains(enchantmentName)) {
+                    newConfig.enchantmentPrecedence.add(i, enchantmentName);
+                }
+            }
+
+            // Apply loaded config
+            CONFIG = newConfig;
         } catch (IOException e) {
             EnbeonsCustomBooks.LOGGER.warn("Failed to load config");
         }
