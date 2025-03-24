@@ -103,15 +103,19 @@ public class BooksConfig {
             BooksConfig newConfig = gson.fromJson(Files.readString(configLocation), BooksConfig.class);
 
             // Ensure that all enchantments are present in the config
+            boolean configChanged = false;
             for (int i = 0; i < CONFIG.enchantmentPrecedence.size(); i++) {
                 String enchantmentName = CONFIG.enchantmentPrecedence.get(i);
                 if (!newConfig.enchantmentPrecedence.contains(enchantmentName)) {
+                    configChanged = true;
                     newConfig.enchantmentPrecedence.add(i, enchantmentName);
                 }
             }
 
             // Apply loaded config
             CONFIG = newConfig;
+            // And re-save if required
+            if (configChanged) saveConfig();
         } catch (IOException e) {
             EnbeonsCustomBooks.LOGGER.warn("Failed to load config");
         }
