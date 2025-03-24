@@ -16,7 +16,7 @@ import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 @Mixin(ItemModelManager.class)
 public class EnchantedBookModelsMixin {
     @Redirect(
-            method = "update(Lnet/minecraft/client/render/item/ItemRenderState;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ModelTransformationMode;Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;I)V",
+            method = "update",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;get(Lnet/minecraft/component/ComponentType;)Ljava/lang/Object;")
     )
     private Object bookModelReturner(ItemStack instance, ComponentType<Identifier> componentType) {
