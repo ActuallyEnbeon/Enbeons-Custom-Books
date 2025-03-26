@@ -17,6 +17,14 @@ with rarer enchantments taking priority over more common ones (Mending has the h
 
 I took inspiration from [Even Better Enchants](https://modrinth.com/resourcepack/even-better-enchants) for some of the textures in this mod.
 
+## Dependencies
+
+[Fabric API](https://github.com/FabricMC/fabric) is required to run this mod.
+
+Additionally, to access the in-game config screen, you will need:
+- [YetAnotherConfigLib (YACL)](https://github.com/isXander/YetAnotherConfigLib)
+- [Mod Menu](https://github.com/TerraformersMC/ModMenu)
+
 ## Textures
 
 ![allbooks](https://github.com/user-attachments/assets/45d09a3c-197b-4336-9ffa-aaabd64be4bd)
