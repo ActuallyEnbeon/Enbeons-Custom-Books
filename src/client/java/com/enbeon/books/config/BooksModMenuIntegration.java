@@ -27,6 +27,8 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                 .build())
                         .option(Option.<Boolean>createBuilder()
                                 .name(Text.translatable("config.enbeons_custom_books.option.mendingAnimation"))
+                                .description(OptionDescription.of(
+                                        Text.translatable("config.enbeons_custom_books.option.mendingAnimation.desc")))
                                 .binding(true, () -> CONFIG.mendingAnimated, newValue -> CONFIG.mendingAnimated = newValue)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
@@ -37,10 +39,10 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                 .name(Text.translatable("config.enbeons_custom_books.option.precedence"))
                                 .description(OptionDescription.of(
                                         Text.translatable("config.enbeons_custom_books.option.precedence.desc")))
-                                .binding(Binding.generic(
-                                        encodePrecedence(BooksConfig.defaultPrecedence),
-                                        () -> encodePrecedence(CONFIG.enchantmentPrecedence),
-                                        newValue -> CONFIG.enchantmentPrecedence = decodePrecedence(newValue)))
+                                .binding(
+                                        decodePrecedence(BooksConfig.defaultPrecedence),
+                                        () -> decodePrecedence(CONFIG.enchantmentPrecedence),
+                                        newValue -> CONFIG.enchantmentPrecedence = encodePrecedence(newValue))
                                 .controller(option -> () -> new LabelController(option))
                                 .initial(Text.of(""))
                                 .maximumNumberOfEntries(BooksConfig.defaultPrecedence.size())

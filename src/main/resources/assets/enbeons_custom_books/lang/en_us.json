@@ -3,7 +3,8 @@
   "config.enbeons_custom_books.category.general": "General",
   "config.enbeons_custom_books.option.modEnabled": "Custom book textures",
   "config.enbeons_custom_books.option.modEnabled.desc": "If disabled, Enchanted Books use the default texture.",
-  "config.enbeons_custom_books.option.mendingAnimation": "Animated Mending book",
+  "config.enbeons_custom_books.option.mendingAnimation": "Mending animation",
+  "config.enbeons_custom_books.option.mendingAnimation.desc": "Controls whether the texture for Enchanted Books with Mending is animated.",
   "config.enbeons_custom_books.category.precedence": "Texture precedence",
   "config.enbeons_custom_books.option.precedence": "Highest priority first",
   "config.enbeons_custom_books.option.precedence.desc": "Each enchantment in the list takes priority over every enchantment below it. Enchanted Books take on the texture of their highest-priority enchantment."

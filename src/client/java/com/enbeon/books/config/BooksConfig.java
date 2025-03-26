@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
@@ -71,6 +72,8 @@ public class BooksConfig {
 
     ArrayList<String> enchantmentPrecedence = defaultPrecedence;
 
+    static HashMap<Text, String> texts = new HashMap<>();
+
     public boolean isModEnabled() {
         return modEnabled;
     }
@@ -123,18 +126,29 @@ public class BooksConfig {
         }
     }
 
-    public static ArrayList<Text> encodePrecedence(ArrayList<String> input) {
+    public static ArrayList<Text> decodePrecedence(ArrayList<String> input) {
         ArrayList<Text> output = new ArrayList<>();
         for (String enchantmentName : input) {
-            output.add(Text.of(enchantmentName));
+            String keyBuilder = "enchantment.";
+            keyBuilder += (
+                    enchantmentName.contains(":")
+                    ? enchantmentName.replace(':', '.')
+                    : "minecraft." + enchantmentName
+            );
+            Text enchantmentText = Text.translatable(keyBuilder);
+            output.add(enchantmentText);
+            texts.put(enchantmentText, enchantmentName);
         }
         return output;
     }
 
-    public static ArrayList<String> decodePrecedence(List<Text> input) {
+    public static ArrayList<String> encodePrecedence(List<Text> input) {
         ArrayList<String> output = new ArrayList<>();
-        for (Text enchantmentName : input) {
-            output.add(enchantmentName.getString());
+        for (Text enchantmentText : input) {
+            String enchantmentName = texts.get(enchantmentText);
+            if (enchantmentName != null) {
+                output.add(enchantmentName);
+            }
         }
         return output;
     }
