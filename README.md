@@ -60,8 +60,8 @@ I'm also happy to receive pull requests, although bear in mind that it might tak
     ```
    with `mod_namespace` and `enchantment_id` again changed to the correct values.
 
-7. Add all the new enchantments to `enchantmentPrecedence` in the `BooksConfig` class.
+7. Add the new enchantments to `defaultPrecedence` in the `BooksConfig` class.
     You can put them wherever you like in the order, although you may want to consider putting rarer or more valuable enchantments higher up than more common ones.
-    Strings should be in the format `mod_namespace:enchantment_id` (note the colon `:` instead of slash `/`).
+    Your new strings should be in the format `"mod_namespace:enchantment_id"` (note the colon `:` instead of slash `/`).
 8. Try it out! If everything has gone to plan, you should see your new textures in-game.
     
