@@ -3,6 +3,7 @@ package com.enbeon.books.config;
 import com.enbeon.books.EnbeonsCustomBooks;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.minecraft.text.Text;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -17,8 +18,7 @@ public class BooksConfig {
     boolean modEnabled = true;
     boolean mendingAnimated = true;
 
-    // TODO: make a screen to allow customising the order
-    ArrayList<String> enchantmentPrecedence = new ArrayList<>(List.of(
+    static final ArrayList<String> defaultPrecedence = new ArrayList<>(List.of(
             // Treasure enchantments
             "mending",
             "frost_walker",
@@ -68,6 +68,8 @@ public class BooksConfig {
             "protection",
             "sharpness"
     ));
+
+    ArrayList<String> enchantmentPrecedence = defaultPrecedence;
 
     public boolean isModEnabled() {
         return modEnabled;
@@ -119,5 +121,21 @@ public class BooksConfig {
         } catch (IOException e) {
             EnbeonsCustomBooks.LOGGER.warn("Failed to load config");
         }
+    }
+
+    public static ArrayList<Text> encodePrecedence(ArrayList<String> input) {
+        ArrayList<Text> output = new ArrayList<>();
+        for (String enchantmentName : input) {
+            output.add(Text.of(enchantmentName));
+        }
+        return output;
+    }
+
+    public static ArrayList<String> decodePrecedence(List<Text> input) {
+        ArrayList<String> output = new ArrayList<>();
+        for (Text enchantmentName : input) {
+            output.add(enchantmentName.getString());
+        }
+        return output;
     }
 }

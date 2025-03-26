@@ -4,16 +4,16 @@ Yet another Minecraft mod that gives Enchanted Books unique textures based on th
 
 Compatible with Fabric and Quilt. Sorry if you run Forge or NeoForge!
 
-This mod is currently compatible with 1.21.4 only. I aim to update it to future versions, but I probably won't backport unless there's demand for it.
+This mod is compatible with 1.21.4+. I probably won't backport unless there's demand for it.
 
 ## Preamble
 
-This mod is the product of wanting a solution to component-controlled textures for Enchanted Books, when CIT is unavailable and Mojang's vanilla solution is infeasible.
+This mod is the product of wanting a solution to component-controlled textures for Enchanted Books,
+when CIT is unavailable and Mojang's vanilla solution is infeasible.
 
 Enbeon's Custom Books uses a precedence-based system to decide which texture is used for a given book.
-This precedence is fully configurable (in the config `.json` file - I'm working on getting a config screen up and running for it!)
-and I've provided what I feel is a sensible default order, with rarer enchantments taking priority over more common ones
-(Mending has the highest priority, Sharpness has the lowest).
+This precedence is fully configurable in the mod config; and I've provided what I feel is a sensible default order,
+with rarer enchantments taking priority over more common ones (Mending has the highest priority, Sharpness has the lowest).
 
 I took inspiration from [Even Better Enchants](https://modrinth.com/resourcepack/even-better-enchants) for some of the textures in this mod.
 
@@ -60,8 +60,8 @@ I'm also happy to receive pull requests, although bear in mind that it might tak
     ```
    with `mod_namespace` and `enchantment_id` again changed to the correct values.
 
-7. Add all the new enchantments to `enchantmentPrecedence` in the `BooksConfig` class.
+7. Add the new enchantments to `defaultPrecedence` in the `BooksConfig` class.
     You can put them wherever you like in the order, although you may want to consider putting rarer or more valuable enchantments higher up than more common ones.
-    Strings should be in the format `mod_namespace:enchantment_id` (note the colon `:` instead of slash `/`).
+    Your new strings should be in the format `"mod_namespace:enchantment_id"` (note the colon `:` instead of slash `/`).
 8. Try it out! If everything has gone to plan, you should see your new textures in-game.
     
