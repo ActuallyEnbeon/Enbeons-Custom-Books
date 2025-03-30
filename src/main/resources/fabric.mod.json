@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "icon": "assets/enbeons_custom_books/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
       "com.enbeon.books.EnbeonsCustomBooks"
