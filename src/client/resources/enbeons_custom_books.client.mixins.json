@@ -3,8 +3,10 @@
   "package": "com.enbeon.books.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "EnchantedBookModelsMixin"
+    "EnchantedBookModelsMixins$TwentyOnePointFive",
+    "EnchantedBookModelsMixins$TwentyOnePointFour"
   ],
+  "plugin": "com.enbeon.books.mixin.client.MixinVersionControlPlugin",
   "injectors": {
     "defaultRequire": 1
 	}
