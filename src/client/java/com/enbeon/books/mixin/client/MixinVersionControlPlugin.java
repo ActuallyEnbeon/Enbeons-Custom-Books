@@ -23,11 +23,7 @@ public class MixinVersionControlPlugin implements IMixinConfigPlugin {
         } else {
             innerClassName = "TwentyOnePointFive";
         }
-        return mixinClassName.equals(makeMixinClassName(innerClassName));
-    }
-
-    private String makeMixinClassName(String innerClassName) {
-        return "com.enbeon.books.mixin.client.EnchantedBookModelsMixins$" + innerClassName;
+        return mixinClassName.equals("com.enbeon.books.mixin.client.EnchantedBookModelsMixins$" + innerClassName);
     }
 
     // Boilerplate
