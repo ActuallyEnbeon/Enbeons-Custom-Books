@@ -1,23 +1,24 @@
 package com.enbeon.books.config;
 
 import com.enbeon.books.EnbeonsCustomBooks;
+import com.enbeon.books.EnbeonsCustomBooksClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Text;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
-import static com.enbeon.books.EnbeonsCustomBooksClient.configLocation;
-
 public class BooksConfig {
-    boolean modEnabled = true;
-    boolean mendingAnimated = true;
+    // Static fields
+    static final Path configLocation =
+            FabricLoader.getInstance().getConfigDir().resolve("enbeons-custom-books-config.json");
 
     static final ArrayList<String> defaultPrecedence = new ArrayList<>(List.of(
             // Treasure enchantments
@@ -70,9 +71,12 @@ public class BooksConfig {
             "sharpness"
     ));
 
-    ArrayList<String> enchantmentPrecedence = defaultPrecedence;
-
     static HashMap<Text, String> texts = new HashMap<>();
+
+    // Config values
+    boolean modEnabled = true;
+    boolean mendingAnimated = true;
+    ArrayList<String> enchantmentPrecedence = defaultPrecedence;
 
     public boolean isModEnabled() {
         return modEnabled;
@@ -91,7 +95,7 @@ public class BooksConfig {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
                     .create();
-            Files.writeString(configLocation, gson.toJson(CONFIG), StandardCharsets.UTF_8);
+            Files.writeString(configLocation, gson.toJson(EnbeonsCustomBooksClient.CONFIG), StandardCharsets.UTF_8);
         } catch (IOException e) {
             EnbeonsCustomBooks.LOGGER.warn("Failed to save config");
         }
@@ -109,8 +113,8 @@ public class BooksConfig {
 
             // Ensure that all enchantments are present in the config
             boolean configChanged = false;
-            for (int i = 0; i < CONFIG.enchantmentPrecedence.size(); i++) {
-                String enchantmentName = CONFIG.enchantmentPrecedence.get(i);
+            for (int i = 0; i < defaultPrecedence.size(); i++) {
+                String enchantmentName = defaultPrecedence.get(i);
                 if (!newConfig.enchantmentPrecedence.contains(enchantmentName)) {
                     configChanged = true;
                     newConfig.enchantmentPrecedence.add(i, enchantmentName);
@@ -118,7 +122,7 @@ public class BooksConfig {
             }
 
             // Apply loaded config
-            CONFIG = newConfig;
+            EnbeonsCustomBooksClient.CONFIG = newConfig;
             // And re-save if required
             if (configChanged) saveConfig();
         } catch (IOException e) {
