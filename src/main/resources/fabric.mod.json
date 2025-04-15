@@ -8,6 +8,8 @@
     "Enbeon"
   ],
   "contact": {
+    "homepage": "https://modrinth.com/mod/enbeons-custom-books",
+    "issues": "https://github.com/ActuallyEnbeon/Enbeons-Custom-Books/issues",
     "sources": "https://github.com/ActuallyEnbeon/Enbeons-Custom-Books"
   },
   "license": "MIT",
@@ -37,8 +39,8 @@
     "java": ">=21",
     "fabric-api": "*"
   },
-  "suggests": {
+  "recommends": {
     "yet_another_config_lib_v3": ">=3.6.6+1.21.5-fabric",
-    "modmenu": ">=14.0.0"
+    "modmenu": ">=14.0.0-rc.2"
   }
 }

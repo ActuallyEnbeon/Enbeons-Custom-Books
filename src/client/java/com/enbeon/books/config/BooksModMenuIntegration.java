@@ -35,7 +35,7 @@ public class BooksModMenuIntegration implements ModMenuApi {
                         .build())
                 .category(ConfigCategory.createBuilder()
                         .name(Text.translatable("config.enbeons_custom_books.category.precedence"))
-                        .option(ListOption.<Text>createBuilder()
+                        .group(ListOption.<Text>createBuilder()
                                 .name(Text.translatable("config.enbeons_custom_books.option.precedence"))
                                 .description(OptionDescription.of(
                                         Text.translatable("config.enbeons_custom_books.option.precedence.desc")))

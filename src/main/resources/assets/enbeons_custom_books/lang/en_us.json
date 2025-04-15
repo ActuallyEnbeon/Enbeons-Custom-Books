@@ -7,5 +7,5 @@
   "config.enbeons_custom_books.option.mendingAnimation.desc": "Controls whether the texture for Enchanted Books with Mending is animated.",
   "config.enbeons_custom_books.category.precedence": "Texture precedence",
   "config.enbeons_custom_books.option.precedence": "Highest priority first",
-  "config.enbeons_custom_books.option.precedence.desc": "Each enchantment in the list takes priority over every enchantment below it. Enchanted Books take on the texture of their highest-priority enchantment."
+  "config.enbeons_custom_books.option.precedence.desc": "Each enchantment in the list has priority over every enchantment below it. Enchanted Books take on the texture of their highest-priority enchantment."
 }
