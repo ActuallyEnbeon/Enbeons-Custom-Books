@@ -32,6 +32,13 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                 .binding(true, () -> CONFIG.mendingAnimated, newValue -> CONFIG.mendingAnimated = newValue)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
+                        .option(Option.<Boolean>createBuilder()
+                                .name(Text.translatable("config.enbeons_custom_books.option.oldUnbreaking"))
+                                .description(OptionDescription.of(
+                                        Text.translatable("config.enbeons_custom_books.option.oldUnbreaking.desc")))
+                                .binding(false, () -> CONFIG.oldUnbreaking, newValue -> CONFIG.oldUnbreaking = newValue)
+                                .controller(TickBoxControllerBuilder::create)
+                                .build())
                         .build())
                 .category(ConfigCategory.createBuilder()
                         .name(Text.translatable("config.enbeons_custom_books.category.precedence"))

@@ -76,6 +76,7 @@ public class BooksConfig {
     // Config values
     boolean modEnabled = true;
     boolean mendingAnimated = true;
+    boolean oldUnbreaking = false;
     ArrayList<String> enchantmentPrecedence = defaultPrecedence;
 
     public boolean isModEnabled() {
@@ -84,6 +85,10 @@ public class BooksConfig {
 
     public boolean isMendingAnimated() {
         return mendingAnimated;
+    }
+
+    public boolean isOldUnbreaking() {
+        return oldUnbreaking;
     }
 
     public ArrayList<String> getEnchantmentPrecedence() {

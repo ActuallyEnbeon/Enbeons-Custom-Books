@@ -34,6 +34,9 @@ public class EnchantmentGetter {
         if (enchantmentName.equals("mending") && !CONFIG.isMendingAnimated()) {
             return "mending_static";
         }
+        if (enchantmentName.equals("unbreaking") && CONFIG.isOldUnbreaking()) {
+            return "unbreaking_old";
+        }
         // ':' not allowed in paths, use '/' in conjunction with directory structure instead
         return enchantmentName.replace(':', '/');
     }
