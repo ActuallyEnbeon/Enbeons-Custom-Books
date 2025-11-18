@@ -59,6 +59,7 @@ public class BooksConfig {
             "fire_protection",
             "knockback",
             "loyalty",
+            "lunge",
             "projectile_protection",
             "quick_charge",
             "smite",
