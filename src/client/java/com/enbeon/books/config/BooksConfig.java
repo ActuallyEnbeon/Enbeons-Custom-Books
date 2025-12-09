@@ -117,13 +117,15 @@ public class BooksConfig {
             Gson gson = new Gson();
             BooksConfig newConfig = gson.fromJson(Files.readString(configLocation), BooksConfig.class);
 
-            // Ensure that all enchantments are present in the config
+            // Ensure that all enchantments are present in the config (if they should be included)
             boolean configChanged = false;
             for (int i = 0; i < defaultPrecedence.size(); i++) {
                 String enchantmentName = defaultPrecedence.get(i);
-                if (!newConfig.enchantmentPrecedence.contains(enchantmentName)) {
+                if (!newConfig.enchantmentPrecedence.contains(enchantmentName)
+                        && ConditionalConfigLogic.shouldIncludeEnchantment(enchantmentName)) {
                     configChanged = true;
-                    newConfig.enchantmentPrecedence.add(i, enchantmentName);
+                    // If the list is not long enough to put the enchantment in the right place, just append it
+                    newConfig.enchantmentPrecedence.add(Math.min(i, newConfig.enchantmentPrecedence.size()), enchantmentName);
                 }
             }
 
@@ -139,6 +141,7 @@ public class BooksConfig {
     public static ArrayList<Text> decodePrecedence(ArrayList<String> input) {
         ArrayList<Text> output = new ArrayList<>();
         for (String enchantmentName : input) {
+            if (enchantmentName == null) continue;
             String keyBuilder = "enchantment.";
             keyBuilder += (
                     enchantmentName.contains(":")
