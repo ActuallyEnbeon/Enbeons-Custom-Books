@@ -47,7 +47,7 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                 .description(OptionDescription.of(
                                         Text.translatable("config.enbeons_custom_books.option.precedence.desc")))
                                 .binding(
-                                        decodePrecedence(BooksConfig.defaultPrecedence),
+                                        decodePrecedence(BooksConfig.prunedDefaultPrecedence()),
                                         () -> decodePrecedence(CONFIG.enchantmentPrecedence),
                                         newValue -> CONFIG.enchantmentPrecedence = encodePrecedence(newValue))
                                 .controller(option -> () -> new LabelController(option))

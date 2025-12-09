@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BooksConfig {
     // Static fields
@@ -72,6 +73,13 @@ public class BooksConfig {
             "sharpness"
     ));
 
+    static List<String> prunedDefaultPrecedence() {
+        return defaultPrecedence
+                .stream()
+                .filter(ConditionalConfigLogic::shouldIncludeEnchantment)
+                .collect(Collectors.toList());
+    }
+
     static HashMap<Text, String> texts = new HashMap<>();
 
     // Config values
@@ -119,10 +127,9 @@ public class BooksConfig {
 
             // Ensure that all enchantments are present in the config (if they should be included)
             boolean configChanged = false;
-            for (int i = 0; i < defaultPrecedence.size(); i++) {
-                String enchantmentName = defaultPrecedence.get(i);
-                if (!newConfig.enchantmentPrecedence.contains(enchantmentName)
-                        && ConditionalConfigLogic.shouldIncludeEnchantment(enchantmentName)) {
+            for (int i = 0; i < prunedDefaultPrecedence().size(); i++) {
+                String enchantmentName = prunedDefaultPrecedence().get(i);
+                if (!newConfig.enchantmentPrecedence.contains(enchantmentName)) {
                     configChanged = true;
                     // If the list is not long enough to put the enchantment in the right place, just append it
                     newConfig.enchantmentPrecedence.add(Math.min(i, newConfig.enchantmentPrecedence.size()), enchantmentName);
@@ -138,7 +145,7 @@ public class BooksConfig {
         }
     }
 
-    public static ArrayList<Text> decodePrecedence(ArrayList<String> input) {
+    public static ArrayList<Text> decodePrecedence(List<String> input) {
         ArrayList<Text> output = new ArrayList<>();
         for (String enchantmentName : input) {
             if (enchantmentName == null) continue;
