@@ -1,35 +1,35 @@
 package com.enbeon.books.mixin.client;
 
 import com.enbeon.books.EnchantmentGetter;
-import net.minecraft.client.item.ItemModelManager;
-import net.minecraft.component.ComponentType;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 
-@Mixin(ItemModelManager.class)
+@Mixin(ItemModelResolver.class)
 public class EnchantedBookModelsMixin {
     @Redirect(
-            method = "update",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;get(Lnet/minecraft/component/ComponentType;)Ljava/lang/Object;")
+            method = "appendItemLayers",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;")
     )
-    private Object bookModelReturner(ItemStack instance, ComponentType<Identifier> componentType) {
+    private Object bookModelReturner(ItemStack instance, DataComponentType<Identifier> componentType) {
         Identifier modelID = instance.get(componentType);
 
-        if (modelID != null && modelID.equals(Identifier.of("minecraft", "enchanted_book"))) {
-            ItemEnchantmentsComponent storedEnchantments = instance.getComponents().getOrDefault(
-                    DataComponentTypes.STORED_ENCHANTMENTS, null
+        if (modelID != null && modelID.equals(Identifier.fromNamespaceAndPath("minecraft", "enchanted_book"))) {
+            ItemEnchantments storedEnchantments = instance.getComponents().get(
+                    DataComponents.STORED_ENCHANTMENTS
             );
 
             if (storedEnchantments != null && !storedEnchantments.isEmpty() && CONFIG.isModEnabled()) {
                 return EnchantmentGetter.getEnchantment(
-                        storedEnchantments.getEnchantments(), modelID
+                        storedEnchantments.keySet(), modelID
                 );
             }
         }

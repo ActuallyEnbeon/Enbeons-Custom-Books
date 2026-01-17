@@ -5,7 +5,7 @@ import com.enbeon.books.EnbeonsCustomBooksClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -80,7 +80,7 @@ public class BooksConfig {
                 .collect(Collectors.toList());
     }
 
-    static HashMap<Text, String> texts = new HashMap<>();
+    static HashMap<Component, String> texts = new HashMap<>();
 
     // Config values
     boolean modEnabled = true;
@@ -145,8 +145,8 @@ public class BooksConfig {
         }
     }
 
-    public static ArrayList<Text> decodePrecedence(List<String> input) {
-        ArrayList<Text> output = new ArrayList<>();
+    public static ArrayList<Component> decodePrecedence(List<String> input) {
+        ArrayList<Component> output = new ArrayList<>();
         for (String enchantmentName : input) {
             if (enchantmentName == null) continue;
             String keyBuilder = "enchantment.";
@@ -155,16 +155,16 @@ public class BooksConfig {
                     ? enchantmentName.replace(':', '.')
                     : "minecraft." + enchantmentName
             );
-            Text enchantmentText = Text.translatable(keyBuilder);
+            Component enchantmentText = Component.translatable(keyBuilder);
             output.add(enchantmentText);
             texts.put(enchantmentText, enchantmentName);
         }
         return output;
     }
 
-    public static ArrayList<String> encodePrecedence(List<Text> input) {
+    public static ArrayList<String> encodePrecedence(List<Component> input) {
         ArrayList<String> output = new ArrayList<>();
-        for (Text enchantmentText : input) {
+        for (Component enchantmentText : input) {
             String enchantmentName = texts.get(enchantmentText);
             if (enchantmentName != null) {
                 output.add(enchantmentName);

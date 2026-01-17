@@ -1,8 +1,8 @@
 package com.enbeon.books;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.Set;
 
@@ -10,24 +10,24 @@ import static com.enbeon.books.EnbeonsCustomBooks.MOD_ID;
 import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 
 public class EnchantmentGetter {
-    public static Identifier getEnchantment(Set<RegistryEntry<Enchantment>> enchantments, Identifier fallback) {
+    public static Identifier getEnchantment(Set<Holder<Enchantment>> enchantments, Identifier fallback) {
         for (String enchantmentName : CONFIG.getEnchantmentPrecedence()) {
             boolean match = enchantments.stream().anyMatch(
                     entry -> enchantmentIDMatches(entry, enchantmentName)
             );
             if (match) {
                 String checkedName = specialBehaviour(enchantmentName);
-                return Identifier.of(MOD_ID, checkedName);
+                return Identifier.fromNamespaceAndPath(MOD_ID, checkedName);
             }
         }
         return fallback;
     }
 
-    public static boolean enchantmentIDMatches(RegistryEntry<Enchantment> entry, String enchantmentName) {
-        if (!(entry instanceof RegistryEntry.Reference<Enchantment> ref)) {
+    public static boolean enchantmentIDMatches(Holder<Enchantment> entry, String enchantmentName) {
+        if (!(entry instanceof Holder.Reference<Enchantment> ref)) {
             return false;
         }
-        return ref.matchesId(Identifier.of(enchantmentName));
+        return ref.is(Identifier.parse(enchantmentName));
     }
 
     private static String specialBehaviour(String enchantmentName) {
