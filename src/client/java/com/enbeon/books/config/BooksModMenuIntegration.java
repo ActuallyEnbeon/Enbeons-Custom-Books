@@ -1,10 +1,11 @@
 package com.enbeon.books.config;
 
+import com.enbeon.books.config.controllers.ComponentTextureWrapper;
+import com.enbeon.books.config.controllers.LabelAndTextureController;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
-import dev.isxander.yacl3.gui.controllers.LabelController;
 import net.minecraft.network.chat.Component;
 
 import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
@@ -42,7 +43,7 @@ public class BooksModMenuIntegration implements ModMenuApi {
                         .build())
                 .category(ConfigCategory.createBuilder()
                         .name(Component.translatable("config.enbeons_custom_books.category.precedence"))
-                        .group(ListOption.<Component>createBuilder()
+                        .group(ListOption.<ComponentTextureWrapper>createBuilder()
                                 .name(Component.translatable("config.enbeons_custom_books.option.precedence"))
                                 .description(OptionDescription.of(
                                         Component.translatable("config.enbeons_custom_books.option.precedence.desc")))
@@ -50,8 +51,8 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                         decodePrecedence(BooksConfig.prunedDefaultPrecedence()),
                                         () -> decodePrecedence(CONFIG.enchantmentPrecedence),
                                         newValue -> CONFIG.enchantmentPrecedence = encodePrecedence(newValue))
-                                .controller(option -> () -> new LabelController(option))
-                                .initial(Component.nullToEmpty(""))
+                                .controller(option -> () -> new LabelAndTextureController(option))
+                                .initial(ComponentTextureWrapper.empty())
                                 .maximumNumberOfEntries(CONFIG.enchantmentPrecedence.size())
                                 .minimumNumberOfEntries(CONFIG.enchantmentPrecedence.size())
                                 .build())

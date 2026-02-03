@@ -2,10 +2,12 @@ package com.enbeon.books.config;
 
 import com.enbeon.books.EnbeonsCustomBooks;
 import com.enbeon.books.EnbeonsCustomBooksClient;
+import com.enbeon.books.config.controllers.ComponentTextureWrapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -145,10 +147,11 @@ public class BooksConfig {
         }
     }
 
-    public static ArrayList<Component> decodePrecedence(List<String> input) {
-        ArrayList<Component> output = new ArrayList<>();
+    public static ArrayList<ComponentTextureWrapper> decodePrecedence(List<String> input) {
+        ArrayList<ComponentTextureWrapper> output = new ArrayList<>();
         for (String enchantmentName : input) {
             if (enchantmentName == null) continue;
+            // Get enchantment name as a Component
             String keyBuilder = "enchantment.";
             keyBuilder += (
                     enchantmentName.contains(":")
@@ -156,16 +159,22 @@ public class BooksConfig {
                     : "minecraft." + enchantmentName
             );
             Component enchantmentText = Component.translatable(keyBuilder);
-            output.add(enchantmentText);
+            // Get enchanted book texture as an Identifier
+            String pathBuilder = "textures/item/";
+            pathBuilder += enchantmentName.replace(':', '/');
+            pathBuilder += ".png";
+            Identifier texture = Identifier.fromNamespaceAndPath(EnbeonsCustomBooks.MOD_ID, pathBuilder);
+            // Create wrapper instance and add to output
+            output.add(new ComponentTextureWrapper(enchantmentText, texture));
             texts.put(enchantmentText, enchantmentName);
         }
         return output;
     }
 
-    public static ArrayList<String> encodePrecedence(List<Component> input) {
+    public static ArrayList<String> encodePrecedence(List<ComponentTextureWrapper> input) {
         ArrayList<String> output = new ArrayList<>();
-        for (Component enchantmentText : input) {
-            String enchantmentName = texts.get(enchantmentText);
+        for (ComponentTextureWrapper wrapper : input) {
+            String enchantmentName = texts.get(wrapper.component());
             if (enchantmentName != null) {
                 output.add(enchantmentName);
             }
