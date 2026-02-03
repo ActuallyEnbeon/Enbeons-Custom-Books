@@ -29,7 +29,7 @@ Additionally, to access the in-game config screen, you will need:
 
 ## Textures
 
-![allbooks](https://github.com/user-attachments/assets/45d09a3c-197b-4336-9ffa-aaabd64be4bd)
+![allbooks-1 21 11](https://github.com/user-attachments/assets/2ad2862b-4f11-4985-894b-d213b46a5b7f)
 
 The animation for the Mending book texture can be disabled in the in-game config.
 
