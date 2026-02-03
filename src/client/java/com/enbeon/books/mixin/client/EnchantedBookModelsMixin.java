@@ -22,7 +22,7 @@ public class EnchantedBookModelsMixin {
     private Object bookModelReturner(ItemStack instance, DataComponentType<Identifier> componentType) {
         Identifier modelID = instance.get(componentType);
 
-        if (modelID != null && modelID.equals(Identifier.fromNamespaceAndPath("minecraft", "enchanted_book"))) {
+        if (modelID != null && modelID.equals(Identifier.withDefaultNamespace("enchanted_book"))) {
             ItemEnchantments storedEnchantments = instance.getComponents().get(
                     DataComponents.STORED_ENCHANTMENTS
             );

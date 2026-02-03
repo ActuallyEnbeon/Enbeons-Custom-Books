@@ -12,11 +12,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
@@ -29,21 +28,20 @@ import java.util.List;
 /**
  * Renders some text as a label, and optionally renders a texture.
  */
-public record LabelAndTextureController(
-        Option<ComponentTextureWrapper> option) implements Controller<ComponentTextureWrapper> {
+public record LabelAndItemController(Option<ComponentItemWrapper> option) implements Controller<ComponentItemWrapper> {
     /**
      * Constructs a label controller
      *
      * @param option bound option
      */
-    public LabelAndTextureController {
+    public LabelAndItemController {
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Option<ComponentTextureWrapper> option() {
+    public Option<ComponentItemWrapper> option() {
         return option;
     }
 
@@ -52,8 +50,8 @@ public record LabelAndTextureController(
         return option().pendingValue().component();
     }
 
-    private Identifier texture() {
-        return option().pendingValue().texture();
+    private ItemStack item() {
+        return option().pendingValue().item();
     }
 
     @Override
@@ -80,9 +78,8 @@ public record LabelAndTextureController(
             int y = getDimension().y();
             for (FormattedCharSequence text : wrappedText) {
                 graphics.drawString(textRenderer, text, getDimension().x() + getXPadding(), y + getYPadding(), option().available() ? -1 : 0xFFA0A0A0, true);
-                if (texture() != null) {
-                    // TODO: Mending book renders incorrectly
-                    graphics.blit(RenderPipelines.GUI_TEXTURED, texture(), getDimension().xLimit() - getXPadding() - 16, y, 0, 0, 16, 16, 16, 16, 16, 16);
+                if (item() != null) {
+                    graphics.renderFakeItem(item(), getDimension().xLimit() - getXPadding() - 16, y);
                 }
                 y += textRenderer.lineHeight;
             }
