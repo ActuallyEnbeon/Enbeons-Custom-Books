@@ -187,6 +187,7 @@ public class BooksConfig {
                 DataComponentPatch.builder()
                         .set(DataComponents.ITEM_MODEL, Identifier.withDefaultNamespace("enchanted_book"))
                         .set(DataComponents.STORED_ENCHANTMENTS, itemEnchantmentsMutable.toImmutable())
+                        .set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
                         .build()
         );
     }
