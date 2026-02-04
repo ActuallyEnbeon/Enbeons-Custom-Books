@@ -40,6 +40,13 @@ public class BooksModMenuIntegration implements ModMenuApi {
                                 .binding(false, () -> CONFIG.oldUnbreaking, newValue -> CONFIG.oldUnbreaking = newValue)
                                 .controller(TickBoxControllerBuilder::create)
                                 .build())
+                        .option(Option.<Boolean>createBuilder()
+                                .name(Component.translatable("config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen"))
+                                .description(OptionDescription.of(
+                                        Component.translatable("config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen.desc")))
+                                .binding(true, () -> CONFIG.booksDisplayedInPrecedenceScreen, newValue -> CONFIG.booksDisplayedInPrecedenceScreen = newValue)
+                                .controller(TickBoxControllerBuilder::create)
+                                .build())
                         .build())
                 .category(ConfigCategory.createBuilder()
                         .name(Component.translatable("config.enbeons_custom_books.category.precedence"))

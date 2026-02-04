@@ -7,6 +7,8 @@
   "config.enbeons_custom_books.option.mendingAnimation.desc": "Controls whether the texture for Enchanted Books with Mending is animated.",
   "config.enbeons_custom_books.option.oldUnbreaking": "Unbreaking unbound",
   "config.enbeons_custom_books.option.oldUnbreaking.desc": "If enabled, Enchanted Books with Unbreaking lose the black binding on their texture.",
+  "config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen": "Preview book textures in config",
+  "config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen.desc": "Controls whether the custom textures for Enchanted Books should be previewed in the texture precedence config screen. Disabling this can improve config screen load times.",
   "config.enbeons_custom_books.category.precedence": "Texture precedence",
   "config.enbeons_custom_books.option.precedence": "Highest priority first",
   "config.enbeons_custom_books.option.precedence.desc": "Each enchantment in the list has priority over every enchantment below it. Enchanted Books take on the texture of their highest-priority enchantment."

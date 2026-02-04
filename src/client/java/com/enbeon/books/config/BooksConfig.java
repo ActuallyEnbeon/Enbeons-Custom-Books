@@ -102,6 +102,7 @@ public class BooksConfig {
     boolean modEnabled = true;
     boolean mendingAnimated = true;
     boolean oldUnbreaking = false;
+    boolean booksDisplayedInPrecedenceScreen = true;
     ArrayList<String> enchantmentPrecedence = defaultPrecedence;
 
     public boolean isModEnabled() {
@@ -114,6 +115,10 @@ public class BooksConfig {
 
     public boolean isOldUnbreaking() {
         return oldUnbreaking;
+    }
+
+    public boolean areBooksDisplayedInPrecedenceScreen() {
+        return booksDisplayedInPrecedenceScreen;
     }
 
     public ArrayList<String> getEnchantmentPrecedence() {
@@ -163,6 +168,8 @@ public class BooksConfig {
 
     @SuppressWarnings("deprecation")
     private static ItemStack getBookAsItem(HolderLookup.RegistryLookup<Enchantment> enchantmentLookup, String enchantmentName) {
+        // If the enchantmentLookup is null, an item cannot be created
+        if (enchantmentLookup == null) return null;
         // Get Holder for the enchanted book Item
         Holder.Reference<Item> itemHolder = Items.ENCHANTED_BOOK.asItem().builtInRegistryHolder();
         itemHolder.bindComponents(DataComponentMap.EMPTY);
@@ -187,8 +194,11 @@ public class BooksConfig {
     public static ArrayList<ComponentItemWrapper> decodePrecedence(List<String> input) {
         ArrayList<ComponentItemWrapper> output = new ArrayList<>();
         // Lookup enchantment registry to allow for book creation (renders books in the config screen)
-        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup =
-                VanillaRegistries.createLookup().lookupOrThrow(Registries.ENCHANTMENT);
+        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = null;
+        // Only need to create the lookup if books will be displayed
+        if (EnbeonsCustomBooksClient.CONFIG.areBooksDisplayedInPrecedenceScreen()) {
+            enchantmentLookup = VanillaRegistries.createLookup().lookupOrThrow(Registries.ENCHANTMENT);
+        }
         // Create ComponentTextureWrappers for all enchantments and add them to output
         for (String enchantmentName : input) {
             if (enchantmentName == null) continue;
