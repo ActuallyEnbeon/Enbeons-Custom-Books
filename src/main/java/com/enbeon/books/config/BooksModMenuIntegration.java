@@ -8,7 +8,7 @@ import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import net.minecraft.network.chat.Component;
 
-import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
+import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
 import static com.enbeon.books.config.BooksConfig.decodePrecedence;
 import static com.enbeon.books.config.BooksConfig.encodePrecedence;
 

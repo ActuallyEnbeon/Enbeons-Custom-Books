@@ -1,7 +1,6 @@
 package com.enbeon.books.config;
 
 import com.enbeon.books.EnbeonsCustomBooks;
-import com.enbeon.books.EnbeonsCustomBooksClient;
 import com.enbeon.books.config.controllers.ComponentItemWrapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -130,7 +129,7 @@ public class BooksConfig {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
                     .create();
-            Files.writeString(configLocation, gson.toJson(EnbeonsCustomBooksClient.CONFIG), StandardCharsets.UTF_8);
+            Files.writeString(configLocation, gson.toJson(EnbeonsCustomBooks.CONFIG), StandardCharsets.UTF_8);
         } catch (IOException e) {
             EnbeonsCustomBooks.LOGGER.warn("Failed to save config");
         }
@@ -158,7 +157,7 @@ public class BooksConfig {
             }
 
             // Apply loaded config
-            EnbeonsCustomBooksClient.CONFIG = newConfig;
+            EnbeonsCustomBooks.CONFIG = newConfig;
             // And re-save if required
             if (configChanged) saveConfig();
         } catch (IOException e) {
@@ -197,7 +196,7 @@ public class BooksConfig {
         // Lookup enchantment registry to allow for book creation (renders books in the config screen)
         HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = null;
         // Only need to create the lookup if books will be displayed
-        if (EnbeonsCustomBooksClient.CONFIG.areBooksDisplayedInPrecedenceScreen()) {
+        if (EnbeonsCustomBooks.CONFIG.areBooksDisplayedInPrecedenceScreen()) {
             enchantmentLookup = VanillaRegistries.createLookup().lookupOrThrow(Registries.ENCHANTMENT);
         }
         // Create ComponentTextureWrappers for all enchantments and add them to output

@@ -21,17 +21,7 @@ repositories {
 	maven { url "https://maven.terraformersmc.com/releases/" }
 }
 
-loom {
-	splitEnvironmentSourceSets()
-
-	mods {
-		"enbeons_custom_books" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
-
-}
+loom {}
 
 dependencies {
 	// To change the versions see the gradle.properties file

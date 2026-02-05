@@ -6,8 +6,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.Set;
 
+import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
 import static com.enbeon.books.EnbeonsCustomBooks.MOD_ID;
-import static com.enbeon.books.EnbeonsCustomBooksClient.CONFIG;
 
 public class EnchantmentGetter {
     public static Identifier getEnchantment(Set<Holder<Enchantment>> enchantments, Identifier fallback) {

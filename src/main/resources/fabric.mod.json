@@ -16,18 +16,14 @@
   "icon": "assets/enbeons_custom_books/icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "com.enbeon.books.EnbeonsCustomBooks"
-    ],
     "client": [
-      "com.enbeon.books.EnbeonsCustomBooksClient"
+      "com.enbeon.books.EnbeonsCustomBooks"
     ],
     "modmenu": [
       "com.enbeon.books.config.BooksModMenuIntegration"
     ]
   },
   "mixins": [
-    "enbeons_custom_books.mixins.json",
     {
       "config": "enbeons_custom_books.client.mixins.json",
       "environment": "client"
