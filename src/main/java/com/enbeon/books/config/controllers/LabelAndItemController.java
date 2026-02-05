@@ -14,8 +14,8 @@ import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
@@ -70,7 +70,7 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
         }
 
         @Override
-        public void render(@NonNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
             updateText();
 
             int y = getDimension().y();
@@ -114,7 +114,7 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
 
         @Nullable
         @Override
-        public ComponentPath nextFocusPath(@NonNull FocusNavigationEvent focusNavigationEvent) {
+        public ComponentPath nextFocusPath(@NotNull FocusNavigationEvent focusNavigationEvent) {
             if (!option().available())
                 return null;
             return !this.isFocused() ? ComponentPath.leaf(this) : null;
@@ -136,7 +136,7 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
         }
 
         @Override
-        public @NonNull NarrationPriority narrationPriority() {
+        public @NotNull NarrationPriority narrationPriority() {
             return NarrationPriority.FOCUSED;
         }
     }

@@ -7,14 +7,13 @@ import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -171,10 +170,9 @@ public class BooksConfig {
         if (enchantmentLookup == null) return null;
         // Get Holder for the enchanted book Item
         Holder.Reference<Item> itemHolder = Items.ENCHANTED_BOOK.asItem().builtInRegistryHolder();
-        itemHolder.bindComponents(DataComponentMap.EMPTY);
         // Create Enchantment ResourceKey and use it to create ItemEnchantments
         ResourceKey<Enchantment> enchantmentResourceKey = ResourceKey.create(
-                Registries.ENCHANTMENT, Identifier.bySeparator(enchantmentName, ':')
+                Registries.ENCHANTMENT, ResourceLocation.bySeparator(enchantmentName, ':')
         );
         Optional<Holder.Reference<Enchantment>> enchantmentHolder = enchantmentLookup.get(enchantmentResourceKey);
         if (enchantmentHolder.isEmpty()) return null;
@@ -184,9 +182,8 @@ public class BooksConfig {
         return new ItemStack(
                 itemHolder, 1,
                 DataComponentPatch.builder()
-                        .set(DataComponents.ITEM_MODEL, Identifier.withDefaultNamespace("enchanted_book"))
+                        .set(DataComponents.ITEM_MODEL, ResourceLocation.withDefaultNamespace("enchanted_book"))
                         .set(DataComponents.STORED_ENCHANTMENTS, itemEnchantmentsMutable.toImmutable())
-                        .set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
                         .build()
         );
     }

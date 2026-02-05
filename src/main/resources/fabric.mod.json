@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "id": "enbeons_custom_books",
-  "version": "${version}",
-  "name": "Enbeon's Custom Books",
+  "version": "${version}+${mc_title}",
+  "name": "${name}",
   "description": "Yet another mod that gives Enchanted Books unique textures based on the enchantments they have. Highly customisible.",
   "summary": "A mod that gives Enchanted Books unique textures.",
   "authors": [
@@ -41,13 +41,13 @@
     }
   ],
   "depends": {
-    "fabricloader": ">=0.18.4",
-    "minecraft": ">=26.1-alpha.3",
-    "java": ">=25",
+    "fabricloader": ">=0.18",
+    "minecraft": "${minecraft}",
+    "java": ">=21",
     "fabric-api": "*"
   },
   "recommends": {
-    "yet_another_config_lib_v3": ">=3.8.2+26.1.0-fabric",
-    "modmenu": ">=18.0.0-alpha.4"
+    "yet_another_config_lib_v3": ">=${yacl}",
+    "modmenu": ">=${modmenu}"
   }
 }
