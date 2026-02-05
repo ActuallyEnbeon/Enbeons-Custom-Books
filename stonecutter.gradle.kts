@@ -22,8 +22,8 @@ stonecutter parameters {
     dependencies["fapi"] = node.project.property("deps.fabric_api") as String
 
     replacements {
-        string(current.parsed < "1.21.9") {
-            replace("Identifier", "ResourceLocation")
+        string(current.parsed >= "1.21.11") {
+            replace("ResourceLocation", "Identifier")
         }
     }
 }

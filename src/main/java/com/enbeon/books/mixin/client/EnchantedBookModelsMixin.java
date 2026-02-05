@@ -16,7 +16,10 @@ import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
 @Mixin(ItemModelResolver.class)
 public class EnchantedBookModelsMixin {
     @Redirect(
+            //? if >1.21.4 {
             method = "appendItemLayers",
+            //?} else
+            //method = "appendItemLayers(Lnet/minecraft/client/renderer/item/ItemStackRenderState;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;")
     )
     private Object bookModelReturner(ItemStack instance, DataComponentType<ResourceLocation> componentType) {
