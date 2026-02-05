@@ -1,6 +1,5 @@
 package com.enbeon.books.config.controllers;
 
-import com.mojang.blaze3d.platform.cursor.CursorTypes;
 import dev.isxander.yacl3.api.Controller;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.utils.Dimension;
@@ -13,7 +12,6 @@ import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -93,100 +91,7 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
 
             GuiUtils.pushPose(graphics);
             GuiUtils.translateZ(graphics, 100);
-            if (isMouseOver(mouseX, mouseY)) {
-                Style style = getStyle(mouseX, mouseY);
-                if (style != null && style.getHoverEvent() != null) {
-
-                    //? if >=1.21.6 {
-                    graphics.renderComponentHoverEffect(textRenderer, style, mouseX, mouseY);
-                    //?} elif >=1.21.5 {
-                    /*if (hoverEvent instanceof HoverEvent.ShowItem showItem) {
-                        ItemStack stack = showItem.item();
-                        renderItemStackTooltip(graphics, mouseX, mouseY, stack);
-                    } else if (hoverEvent instanceof HoverEvent.ShowEntity showEntity) {
-                        HoverEvent.EntityTooltipInfo entity = showEntity.entity();
-                        renderEntityTooltip(graphics, mouseX, mouseY, entity);
-                    } else if (hoverEvent instanceof HoverEvent.ShowText showText) {
-                        Component text = showText.value();
-                        renderTextTooltip(graphics, mouseX, mouseY, text);
-                    }
-                    *///?} else {
-                    /*@Nullable HoverEvent.ItemStackInfo itemStackContent = hoverEvent.getValue(HoverEvent.Action.SHOW_ITEM);
-                    @Nullable HoverEvent.EntityTooltipInfo entityContent = hoverEvent.getValue(HoverEvent.Action.SHOW_ENTITY);
-                    @Nullable Component text = hoverEvent.getValue(HoverEvent.Action.SHOW_TEXT);
-
-                    if (itemStackContent != null) {
-                        ItemStack stack = itemStackContent.getItemStack();
-                        renderItemStackTooltip(graphics, mouseX, mouseY, stack);
-                    } else if (entityContent != null) {
-                        renderEntityTooltip(graphics, mouseX, mouseY, entityContent);
-                    } else if (text != null) {
-                        renderTextTooltip(graphics, mouseX, mouseY, text);
-                    }
-                    *///?}
-                }
-
-                //? if >=1.21.9 {
-                if (style != null && style.getClickEvent() != null) {
-                    graphics.requestCursor(CursorTypes.POINTING_HAND);
-                }
-                //?}
-            }
             GuiUtils.popPose(graphics);
-        }
-
-        //? if <=1.21.5 {
-        /*private void renderItemStackTooltip(GuiGraphics graphics, int mouseX, int mouseY, ItemStack itemStack) {
-            graphics.renderTooltip(textRenderer, Screen.getTooltipFromItem(client, itemStack), itemStack.getTooltipImage(), mouseX, mouseY);
-        }
-        private void renderEntityTooltip(GuiGraphics graphics, int mouseX, int mouseY, HoverEvent.EntityTooltipInfo entity) {
-            if (this.client.options.advancedItemTooltips) {
-                graphics.renderComponentTooltip(textRenderer, entity.getTooltipLines(), mouseX, mouseY);
-            }
-        }
-        private void renderTextTooltip(GuiGraphics graphics, int mouseX, int mouseY, Component text) {
-            MultiLineLabel multilineText = MultiLineLabel.create(textRenderer, text, getDimension().width());
-            YACLScreen.renderMultilineTooltip(graphics, textRenderer, multilineText, getDimension().centerX(), getDimension().y(), getDimension().yLimit(), screen.width, screen.height);
-        }
-        *///?}
-
-        @Override
-        public boolean onMouseClicked(double mouseX, double mouseY, int button) {
-            if (!isMouseOver(mouseX, mouseY))
-                return false;
-
-            Style style = getStyle((int) mouseX, (int) mouseY);
-
-            if (style == null)
-                return false;
-
-            // TODO: reimplement
-            //? if >=1.21.11 {
-            return false;
-            //?} else {
-            /*return screen.handleComponentClicked(style);
-             *///?}
-        }
-
-        @Nullable
-        protected Style getStyle(int mouseX, int mouseY) {
-            if (!getDimension().isPointInside(mouseX, mouseY))
-                return null;
-
-            int x = mouseX - getDimension().x() - getXPadding();
-            int y = mouseY - getDimension().y() - getYPadding();
-            int line = y / textRenderer.lineHeight;
-
-            if (x < 0 || x > getDimension().xLimit()) return null;
-            if (y < 0 || y > getDimension().yLimit()) return null;
-            if (line < 0 || line >= wrappedText.size()) return null;
-
-            // TODO reimplement
-            //? if >=1.21.11 {
-            return null;
-            //?} else {
-            /*return textRenderer.getSplitter().componentStyleAtWidth(wrappedText.get(line), x);
-             *///?}
         }
 
         private int getXPadding() {
