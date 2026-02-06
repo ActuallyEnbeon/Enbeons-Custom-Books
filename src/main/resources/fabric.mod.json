@@ -12,6 +12,13 @@
     "issues": "https://github.com/ActuallyEnbeon/Enbeons-Custom-Books/issues",
     "sources": "https://github.com/ActuallyEnbeon/Enbeons-Custom-Books"
   },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.buymeacoffee": "https://buymeacoffee.com/actuallyenbeon"
+      }
+    }
+  },
   "license": "LGPL-3.0-or-later",
   "icon": "assets/enbeons_custom_books/icon.png",
   "environment": "client",
