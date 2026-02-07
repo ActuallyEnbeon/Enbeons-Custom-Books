@@ -2,6 +2,8 @@
 
 [![Modrinth](https://img.shields.io/modrinth/dt/hLTpBzGI?color=00AF5C&label=downloads&logo=modrinth)](https://modrinth.com/mod/enbeons-custom-books)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/actuallyenbeon)
+
 Yet another Minecraft mod that gives Enchanted Books unique textures based on the enchantments they have.
 
 Compatible with Fabric and Quilt. Sorry if you run Forge or NeoForge!
