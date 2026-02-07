@@ -31,11 +31,16 @@ public class EnchantmentGetter {
     }
 
     private static String specialBehaviour(String enchantmentName) {
-        if (enchantmentName.equals("mending") && !CONFIG.isMendingAnimated()) {
-            return "mending_static";
+        // Add default namespace if there isn't already one
+        if (!enchantmentName.contains(":")) {
+            enchantmentName = "minecraft/" + enchantmentName;
         }
-        if (enchantmentName.equals("unbreaking") && CONFIG.isOldUnbreaking()) {
-            return "unbreaking_old";
+        // Use different models depending on configs
+        if (enchantmentName.equals("minecraft/mending") && !CONFIG.isMendingAnimated()) {
+            return "minecraft/mending_static";
+        }
+        if (enchantmentName.equals("minecraft/unbreaking") && CONFIG.isOldUnbreaking()) {
+            return "minecraft/unbreaking_old";
         }
         // ':' not allowed in paths, use '/' in conjunction with directory structure instead
         return enchantmentName.replace(':', '/');
