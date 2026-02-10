@@ -15,9 +15,10 @@ This mod is compatible with 1.21.4+. I probably won't backport unless there's de
 This mod is the product of wanting a solution to component-controlled textures for Enchanted Books,
 when CIT is unavailable and Mojang's vanilla solution is infeasible.
 
-Enbeon's Custom Books uses a precedence-based system to decide which texture is used for a given book.
-This precedence is fully configurable in the mod config; and I've provided what I feel is a sensible default order,
-with rarer enchantments taking priority over more common ones (Mending has the highest priority, Sharpness has the lowest).
+Enbeon's Custom Books uses a precedence-based system to decide which texture is used for books with multiple enchantments.
+I've provided what I feel is a sensible default order, with rarer enchantments taking priority over more common ones
+(for example, Mending has the highest priority, while Sharpness has the lowest).
+The order is also fully configurable in the mod config.
 
 I took inspiration from [Even Better Enchants](https://modrinth.com/resourcepack/even-better-enchants) for some of the textures in this mod.
 
