@@ -36,6 +36,14 @@ Additionally, to access the in-game config screen, you will need:
 
 The animation for the Mending book texture can be disabled in the in-game config.
 
+## Language support
+
+As of v1.0.4, Enbeon's Custom Books supports:
+- English
+- Simplified Chinese (thanks moqyng!)
+
 ## Mod compatibility
 
 If you find this mod useful and want me to add modded enchantments to it, feel free to create an issue or pull request.
+
+I'm also happy to accept pull requests to add support for new languages.
