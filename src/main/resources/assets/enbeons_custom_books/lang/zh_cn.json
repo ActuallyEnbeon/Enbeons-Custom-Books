@@ -1,4 +1,7 @@
 {
+  "modmenu.nameTranslation.enbeons_custom_books": "Enbeon的自定义附魔书",
+  "modmenu.descriptionTranslation.enbeons_custom_books": "一个为附魔书根据其附魔类型赋予独特材质的模组，高度可定制。",
+  "modmenu.summaryTranslation.enbeons_custom_books": "一个给附魔书赋予独特材质的模组。",
   "config.enbeons_custom_books.title": "Enbeon的自定义附魔书配置",
   "config.enbeons_custom_books.category.general": "通用",
   "config.enbeons_custom_books.option.modEnabled": "自定义附魔书材质",
