@@ -1,4 +1,7 @@
 {
+  "modmenu.nameTranslation.enbeons_custom_books": "Enbeon's Custom Books",
+  "modmenu.descriptionTranslation.enbeons_custom_books": "Yet another mod that gives Enchanted Books unique textures based on the enchantments they have. Highly customisible.",
+  "modmenu.summaryTranslation.enbeons_custom_books": "A mod that gives Enchanted Books unique textures.",
   "config.enbeons_custom_books.title": "Enbeon's Custom Books Config",
   "config.enbeons_custom_books.category.general": "General",
   "config.enbeons_custom_books.option.modEnabled": "Custom book textures",
