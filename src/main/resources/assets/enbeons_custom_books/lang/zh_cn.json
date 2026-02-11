@@ -1,0 +1,15 @@
+{
+  "config.enbeons_custom_books.title": "Enbeon的自定义附魔书配置",
+  "config.enbeons_custom_books.category.general": "通用",
+  "config.enbeons_custom_books.option.modEnabled": "自定义附魔书材质",
+  "config.enbeons_custom_books.option.modEnabled.desc": "若禁用，附魔书将使用默认材质。",
+  "config.enbeons_custom_books.option.mendingAnimation": "经验修补动画",
+  "config.enbeons_custom_books.option.mendingAnimation.desc": "控制带有“经验修补”的附魔书材质是否显示动画。",
+  "config.enbeons_custom_books.option.oldUnbreaking": "耐久附魔无书脊",
+  "config.enbeons_custom_books.option.oldUnbreaking.desc": "若启用，带有“耐久”附魔的附魔书材质将不显示黑色书脊。",
+  "config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen": "在配置界面预览材质",
+  "config.enbeons_custom_books.option.booksDisplayedInPrecedenceScreen.desc": "控制是否在附魔优先级配置界面中预览附魔书的自定义材质。禁用此项可加快配置界面加载速度。",
+  "config.enbeons_custom_books.category.precedence": "附魔优先级",
+  "config.enbeons_custom_books.option.precedence": "附魔优先级",
+  "config.enbeons_custom_books.option.precedence.desc": "此顺序决定了拥有多个附魔的附魔书所使用何种材质。列表顶部的附魔将优先被采用。"
+}
