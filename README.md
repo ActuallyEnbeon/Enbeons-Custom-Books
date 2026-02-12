@@ -47,3 +47,8 @@ As of v1.0.4, Enbeon's Custom Books supports:
 If you find this mod useful and want me to add modded enchantments to it, feel free to create an issue or pull request.
 
 I'm also happy to accept pull requests to add support for new languages.
+
+## Special thanks
+
+This project uses the [Stonecutter](https://stonecutter.kikugie.dev/) build tool, which allows compiling a single codebase to multiple different game versions.
+
