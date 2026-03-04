@@ -3,9 +3,11 @@
   "package": "com.enbeon.books.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "EnchantedBookModelsMixin"
+    "EnchantedBookModelsMixin",
+    "config.DontRenderAddButtonMixin",
+    "config.DontRenderRemoveButtonsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }
