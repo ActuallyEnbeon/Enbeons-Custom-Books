@@ -24,7 +24,7 @@ import java.util.List;
 // Modified by: ActuallyEnbeon
 // Originally modified date: 3rd February 2026
 /**
- * Renders some text as a label, and optionally renders a texture.
+ * Renders some text as a label, and optionally renders a fake item.
  */
 public record LabelAndItemController(Option<ComponentItemWrapper> option) implements Controller<ComponentItemWrapper> {
     /**
@@ -77,7 +77,7 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
             for (FormattedCharSequence text : wrappedText) {
                 graphics.drawString(textRenderer, text, getDimension().x() + getXPadding(), y + getYPadding(), option().available() ? -1 : 0xFFA0A0A0, true);
                 if (item() != null) {
-                    graphics.renderFakeItem(item(), getDimension().xLimit() - getXPadding() - 16, y);
+                    graphics.renderFakeItem(item(), getDimension().xLimit(), y);
                 }
                 y += textRenderer.lineHeight;
             }

@@ -3,9 +3,11 @@
   "package": "com.enbeon.books.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "EnchantedBookModelsMixin"
+    "EnchantedBookModelsMixin",
+    "YaclListWidgetMixins$DontRenderAddButton",
+    "YaclListWidgetMixins$DontRenderRemoveButtons"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }
