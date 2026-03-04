@@ -4,8 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "EnchantedBookModelsMixin",
-    "YaclListWidgetMixins$DontRenderAddButton",
-    "YaclListWidgetMixins$DontRenderRemoveButtons"
+    "config.DontRenderAddButtonMixin",
+    "config.DontRenderRemoveButtonsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
