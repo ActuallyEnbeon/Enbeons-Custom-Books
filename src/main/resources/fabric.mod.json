@@ -42,12 +42,12 @@
   ],
   "depends": {
     "fabricloader": ">=0.18.4",
-    "minecraft": ">=26.1-alpha.3",
+    "minecraft": ">=26.1-pre.3",
     "java": ">=25",
     "fabric-api": "*"
   },
   "recommends": {
-    "yet_another_config_lib_v3": ">=3.8.2+26.1.0-fabric",
-    "modmenu": ">=18.0.0-alpha.4"
+    "yet_another_config_lib_v3": ">=3.9.0+26.1-fabric",
+    "modmenu": ">=18.0.0-alpha.6"
   }
 }
