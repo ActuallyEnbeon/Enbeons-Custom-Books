@@ -4,7 +4,6 @@
   "version": "${version}+${mc_title}",
   "name": "${name}",
   "description": "Yet another mod that gives Enchanted Books unique textures based on the enchantments they have. Highly customisible.",
-  "summary": "A mod that gives Enchanted Books unique textures.",
   "authors": [
     "Enbeon"
   ],
