@@ -1,7 +1,7 @@
 package com.enbeon.books;
 
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.Set;
@@ -10,14 +10,14 @@ import static com.enbeon.books.EnbeonsCustomBooks.CONFIG;
 import static com.enbeon.books.EnbeonsCustomBooks.MOD_ID;
 
 public class EnchantmentGetter {
-    public static ResourceLocation getEnchantment(Set<Holder<Enchantment>> enchantments, ResourceLocation fallback) {
+    public static Identifier getEnchantment(Set<Holder<Enchantment>> enchantments, Identifier fallback) {
         for (String enchantmentName : CONFIG.getEnchantmentPrecedence()) {
             boolean match = enchantments.stream().anyMatch(
                     entry -> enchantmentIDMatches(entry, enchantmentName)
             );
             if (match) {
                 String checkedName = specialBehaviour(enchantmentName);
-                return ResourceLocation.fromNamespaceAndPath(MOD_ID, checkedName);
+                return Identifier.fromNamespaceAndPath(MOD_ID, checkedName);
             }
         }
         return fallback;
@@ -27,7 +27,7 @@ public class EnchantmentGetter {
         if (!(entry instanceof Holder.Reference<Enchantment> ref)) {
             return false;
         }
-        return ref.is(ResourceLocation.parse(enchantmentName));
+        return ref.is(Identifier.parse(enchantmentName));
     }
 
     private static String specialBehaviour(String enchantmentName) {

@@ -5,7 +5,7 @@ import net.minecraft.WorldVersion;
 //? if >=1.21.9 {
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackFormat;
- //?}
+//?}
 
 public class ConditionalConfigLogic {
     public static boolean shouldIncludeEnchantment(String enchantmentName) {

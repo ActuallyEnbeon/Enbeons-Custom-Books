@@ -1,3 +1,5 @@
+//~ gui_graphics_replacements
+
 package com.enbeon.books.config.controllers;
 
 import dev.isxander.yacl3.api.Controller;
@@ -7,7 +9,7 @@ import dev.isxander.yacl3.gui.AbstractWidget;
 import dev.isxander.yacl3.gui.YACLScreen;
 import dev.isxander.yacl3.gui.utils.GuiUtils;
 import net.minecraft.client.gui.ComponentPath;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.navigation.FocusNavigationEvent;
@@ -70,14 +72,14 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
         }
 
         @Override
-        public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float delta) {
+        public void extractRenderState(@NotNull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
             updateText();
 
             int y = getDimension().y();
             for (FormattedCharSequence text : wrappedText) {
-                graphics.drawString(textRenderer, text, getDimension().x() + getXPadding(), y + getYPadding(), option().available() ? -1 : 0xFFA0A0A0, true);
+                graphics.text(textRenderer, text, getDimension().x() + getXPadding(), y + getYPadding(), option().available() ? -1 : 0xFFA0A0A0, true);
                 if (item() != null) {
-                    graphics.renderFakeItem(item(), getDimension().xLimit(), y);
+                    graphics.fakeItem(item(), getDimension().xLimit(), y);
                 }
                 y += textRenderer.lineHeight;
             }
@@ -89,9 +91,14 @@ public record LabelAndItemController(Option<ComponentItemWrapper> option) implem
                 graphics.fill(getDimension().xLimit(), getDimension().y() - 1, getDimension().xLimit() + 1, getDimension().yLimit() + 1, -1);
             }
 
-            GuiUtils.pushPose(graphics);
+            //? if >=26.1 {
+            graphics.pose().pushMatrix();
+            graphics.pose().popMatrix();
+            //?} else {
+            /*GuiUtils.pushPose(graphics);
             GuiUtils.translateZ(graphics, 100);
             GuiUtils.popPose(graphics);
+            *///?}
         }
 
         private int getXPadding() {

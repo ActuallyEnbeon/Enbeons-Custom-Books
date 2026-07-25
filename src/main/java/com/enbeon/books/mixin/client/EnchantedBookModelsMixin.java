@@ -6,7 +6,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -22,10 +22,10 @@ public class EnchantedBookModelsMixin {
             //method = "appendItemLayers(Lnet/minecraft/client/renderer/item/ItemStackRenderState;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;I)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;")
     )
-    private Object bookModelReturner(ItemStack instance, DataComponentType<ResourceLocation> componentType) {
-        ResourceLocation modelID = instance.get(componentType);
+    private Object bookModelReturner(ItemStack instance, DataComponentType<Identifier> componentType) {
+        Identifier modelID = instance.get(componentType);
 
-        if (modelID != null && modelID.equals(ResourceLocation.withDefaultNamespace("enchanted_book"))) {
+        if (modelID != null && modelID.equals(Identifier.withDefaultNamespace("enchanted_book"))) {
             ItemEnchantments storedEnchantments = instance.getComponents().get(DataComponents.STORED_ENCHANTMENTS);
 
             if (storedEnchantments != null && !storedEnchantments.isEmpty() && CONFIG.isModEnabled()) {
