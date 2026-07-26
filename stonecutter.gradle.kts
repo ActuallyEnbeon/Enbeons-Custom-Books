@@ -23,7 +23,7 @@ stonecutter parameters {
             replace("graphics.drawString", "graphics.text")
             replace("renderFakeItem", "fakeItem")
         }
-        string(current.parsed >= "26.3") {
+        string(current.parsed >= "26.3-snapshot-5") {
             replace("createLookup", "createWorldLookup")
         }
     }
