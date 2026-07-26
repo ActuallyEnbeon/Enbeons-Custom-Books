@@ -81,6 +81,7 @@ tasks {
         inputs.property("version", project.property("mod.version"))
         inputs.property("minecraft", project.property("mod.mc_dep"))
         inputs.property("mc_title", project.property("mod.mc_title"))
+        inputs.property("fabric_api_id", project.property("deps.fabric_api_id"))
         inputs.property("yacl", project.property("deps.yacl"))
         inputs.property("modmenu", project.property("deps.modmenu"))
 
@@ -90,6 +91,7 @@ tasks {
             "version" to project.property("mod.version"),
             "minecraft" to project.property("mod.mc_dep"),
             "mc_title" to project.property("mod.mc_title"),
+            "fabric_api_id" to project.property("deps.fabric_api_id"),
             "yacl" to project.property("deps.yacl"),
             "modmenu" to project.property("deps.modmenu")
         )
